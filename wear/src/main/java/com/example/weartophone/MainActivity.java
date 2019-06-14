@@ -2,6 +2,7 @@ package com.example.weartophone;
 
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends WearableActivity {
@@ -15,7 +16,17 @@ public class MainActivity extends WearableActivity {
 
         mTextView = (TextView) findViewById(R.id.text);
 
+        String message = getIntent().getStringExtra("message");
+        if(message==null)
+        {
+            mTextView.setText("No message");
+        }
+        mTextView.setText(message);
+
+
         // Enables Always-on
         setAmbientEnabled();
     }
+
+
 }
